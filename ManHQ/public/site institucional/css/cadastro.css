@@ -14,31 +14,42 @@
   
   
   .logo {
-    width: 250px;
-    height: 150px; 
+    width: 200px;
+    height: 100px; 
     position: fixed; 
-    top: -9px;
+    top: -6px;
     margin-right: 13%;
     
    
   }
   
+  .back{
+    width: 65px;
+    height: 65px; 
+    position: fixed; 
+    top: 17px;
+    margin-left: 93%;
+  }
   
  
-  .h1 {
+  .h1{
     font-family: "ABeeZee", sans-serif;
-    font-weight: 400;
-    font-style: italic; 
-    color: #000000;
+    font-weight: 700;
+    font-style: bold; 
+    background:  linear-gradient(to right, #FF912B, #FF4438);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    color: #000; 
     left: 10px; 
-    font-family: "Sora", sans-serif; 
-    font-optical-sizing: auto;
     margin-bottom: 30px;
   }
+
+  
+
+
   
 
   .formulario {
@@ -55,16 +66,17 @@
   
   
   
-  .form-control {
+  .form-control{
     width: 500px; 
     border-radius: 10px; 
     height: 45px; 
     font-size: 18px; 
     position: relative; 
     border: 2px solid transparent;
-    border-style: solid;
-    border-radius: 10px;
-    border-image: linear-gradient(to right, #FF912B, #FF4438) 1 ;
+    background-image: linear-gradient( white, white), linear-gradient( to right, #FF912B, #FF4438);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 10px; 
     background-color: transparent; 
     padding: 10px; 
     margin-bottom: 10px;
@@ -73,8 +85,13 @@
     font-weight: 400;
     font-style: italic; 
     color: #000000;
+    outline: none;
   }
-  
+
+  custom-input:focus{
+    background-image:  linear-gradient( white, white), linear-gradient( 90deg, #FF912B, #FF4438);
+  }
+
   input::placeholder{
    color: #B5ACAC;
   }
@@ -100,7 +117,11 @@
     padding: 0; 
     border: 0; 
     border-radius: 5px; 
+    font-family: "ABeeZee", sans-serif;
+    font-weight: 400;
+    font-style: italic; 
     color: #fff; 
+    font-size: 20px;
   }
   
  
@@ -119,10 +140,11 @@
     color: #000000;
     display: flex; 
     justify-content: center; 
-    align-items: center; 
+    align-items: center;
+    margin: auto; 
     color: #000;
     position: absolute; 
     bottom: 16px;
-    left: 45%; 
+    left: 45.7%; 
   }
   
