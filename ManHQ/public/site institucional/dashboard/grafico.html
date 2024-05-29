@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/grafico.css">
+    <link rel="shortcut icon" type="imagex/png" href="../img/inicial-transformed-removebg-preview (1).png">
+    <title>Document</title>
+</head>
+<body>
+    <div class="logo"><a href="#"><img src="../img/logo__1_-removebg-preview.png" alt="logo" class="logo"></a></div>
+        
+    <div id="menu">
+        <div id="menu-bar" onclick="menuOnClick()">
+          <div id="bar1" class="bar"></div>
+          <div id="bar2" class="bar"></div>
+          <div id="bar3" class="bar"></div>
+        </div>
+        <nav class="nav" id="nav">
+          <ul>
+            <li><a href="./dashoboard.html">Home</a></li>
+            <li><a href="./pesquisa.html">Pesquisa</a></li>
+            <li><a href="./grafico.html">Gráficos</a></li>
+          </ul>
+        </nav> 
+      </div>
+      
+      <div class="menu-bg" id="menu-bg"></div>
+
+      <h1 class="h1">Gráfico</h1>
+
+</body>
+</html>
+
+
+<script>
+    function menuOnClick() {
+        document.getElementById("menu-bar").classList.toggle("change");
+        document.getElementById("nav").classList.toggle("change");
+        document.getElementById("menu-bg").classList.toggle("change-bg");
+      }
+</script>

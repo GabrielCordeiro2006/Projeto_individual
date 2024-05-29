@@ -29,7 +29,13 @@
     position: fixed; 
     top: 17px;
     margin-left: 93%;
+    transition: transform 0.3s ease;
   }
+
+  .back:hover{
+    transform: scale(1.10);
+  }
+ 
   
  
   .h1{
@@ -61,31 +67,32 @@
     justify-content: space-evenly; 
     border:  0px solid #0000;
     border-radius: 5px; 
-    margin-top: 40px; 
+    margin-top: 20px; 
   }
   
   
   
-  .form-control{
+  .entradas_cadastro{
     width: 500px; 
     border-radius: 10px; 
     height: 45px; 
     font-size: 18px; 
     position: relative; 
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     background-image: linear-gradient( white, white), linear-gradient( to right, #FF912B, #FF4438);
     background-origin: border-box;
     background-clip: padding-box, border-box;
     border-radius: 10px; 
     background-color: transparent; 
     padding: 10px; 
-    margin-bottom: 10px;
+    margin-bottom: 2px;
     color: #000;
     font-family: "ABeeZee", sans-serif;
     font-weight: 400;
     font-style: italic; 
     color: #000000;
     outline: none;
+    box-shadow: #9A9797 0px 4px 4px 0px;
   }
 
   custom-input:focus{
@@ -122,8 +129,12 @@
     font-style: italic; 
     color: #fff; 
     font-size: 20px;
+    transition: transform 0.3s ease;
   }
   
+  button:hover{
+    transform: scale(1.10);
+  }
  
   .b {
     font-family: "ABeeZee", sans-serif;

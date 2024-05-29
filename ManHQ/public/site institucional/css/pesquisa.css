@@ -12,38 +12,24 @@
     background-size: 100%; 
   }
   
-  
+
   .logo {
     width: 200px;
     height: 100px; 
     position: fixed; 
     top: -6px;
-    margin-right: 13%;
-  }
-  
-  .back{
-    width: 65px;
-    height: 65px; 
-    position: fixed; 
-    top: 17px;
-    margin-left: 93%;
-    transition: transform 0.3s ease;
+    margin-left: 580px;
+    
+   
   }
 
-  .back:hover{
-    transform: scale(1.10);
-  }
- 
-  
-  
- 
   .h1{
     font-family: "ABeeZee", sans-serif;
     font-weight: 700;
     font-style: bold; 
-    font-size: 45px;
     background:  linear-gradient(to right, #FF912B, #FF4438);
     color: transparent;
+    font-size: 48px;
     -webkit-background-clip: text;
     background-clip: text;
     display: flex; 
@@ -67,12 +53,12 @@
     justify-content: space-evenly; 
     border:  0px solid #0000;
     border-radius: 5px; 
-    margin-top: 40px; 
+    margin-top: 70px; 
   }
   
   
   
-  .entradas_login{
+  .entradas_pesquisa{
     width: 500px; 
     border-radius: 10px; 
     height: 45px; 
@@ -85,8 +71,7 @@
     border-radius: 10px; 
     background-color: transparent; 
     padding: 10px; 
-    margin-bottom: 10px;
-    color: #000;
+    margin-bottom: 2px;
     font-family: "ABeeZee", sans-serif;
     font-weight: 400;
     font-style: italic; 
@@ -102,7 +87,28 @@
   input::placeholder{
    color: #B5ACAC;
   }
- 
+  
+  .escola{
+    outline: none;
+    box-shadow: #9A9797 0px 4px 4px 0px;
+    width: 500px; 
+    border-radius: 10px; 
+    height: 45px; 
+    font-size: 15px; 
+    position: relative; 
+    border: 1px solid transparent;
+    background-image: linear-gradient( white, white), linear-gradient( to right, #FF912B, #FF4438);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-color: transparent; 
+    padding: 10px; 
+    margin-bottom: 15px;
+    font-family: "ABeeZee", sans-serif;
+    font-weight: 400;
+    font-style: italic; 
+    color: #000000;
+    margin: auto;
+  }
   
 
   
@@ -129,35 +135,112 @@
     font-style: italic; 
     color: #fff; 
     font-size: 20px;
+    margin-top: 50px;
     transition: transform 0.3s ease;
+   
   }
 
   button:hover{
     transform: scale(1.10);
   }
-  
- 
-  .b {
-    font-family: "ABeeZee", sans-serif;
-    font-weight: 400;
-    font-style: italic; 
-    color: #000000;
-  }
+
   
   
-  .a {
-    font-family: "ABeeZee", sans-serif;
-    font-weight: 400;
-    font-style: italic; 
-    color: #000000;
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-    margin: auto; 
-    color: #000;
-    position: absolute; 
-    bottom: 185px;
-    left: 45.3%; 
-    font-size: 15px;
-  }
+
   
+#menu {
+  z-index: 2;
+}
+
+#menu-bar {
+  width: 45px;
+  height: 40px;
+  margin: 30px 0 20px 20px;
+  cursor: pointer;
+  
+}
+
+.bar {
+  height: 5px;
+  width: 100%;
+  background-color: #FF4438;
+  display: block;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+#bar1 {
+  transform: translateY(-4px);
+}
+
+#bar3 {
+  transform: translateY(4px);
+}
+
+.nav {
+  transition: 0.3s ease;
+  display: none;
+}
+
+.nav ul {
+  padding: 0 22px;
+  
+}
+
+.nav li {
+  list-style: none;
+  padding: 12px 0;
+  
+}
+
+.nav li a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.nav li a:hover {
+  font-weight: bold;
+}
+
+.menu-bg, #menu {
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.menu-bg {
+  z-index: 1;
+  width: 0;
+  height: 0;
+  margin: 30px 0 50px 50px;
+  background: radial-gradient(circle, #FF912B, #FF4438);
+  border-radius: 20%;
+  transition: 0.3s ease;
+}
+
+.change {
+  display: block;
+}
+
+.change .bar {
+  background-color: white;
+}
+
+.change #bar1 {
+  transform: translateY(4px) rotateZ(-45deg);
+}
+
+.change #bar2 {
+  opacity: 0;
+}
+
+.change #bar3 {
+  transform: translateY(-6px) rotateZ(45deg);
+}
+
+.change-bg {
+  width: 520px;
+  height: 460px;
+  transform: translate(-60%,-30%);
+}
