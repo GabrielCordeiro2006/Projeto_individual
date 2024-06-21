@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" type="imagex/png" href="../img/inicial-transformed-removebg-preview (1).png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManHQ</title>
+
+    <link rel="stylesheet" href="./../css/pesquisa.css">
+    <script src="../js/sessao.js"></script>
+    <script src="./../js/alerta.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="listar()">
+    <div class="logo"><a href="#"><img src="../img/logo__1_-removebg-preview.png" alt="logo" class="logo"></a></div>
+
+    <div id="menu">
+        <div id="menu-bar" onclick="menuOnClick()">
+            <div id="bar1" class="bar"></div>
+            <div id="bar2" class="bar"></div>
+            <div id="bar3" class="bar"></div>
+        </div>
+        <nav class="nav" id="nav">
+            <ul>
+                <li><a href="./dashoboard.html">Home</a></li>
+                <li><a href="./pesquisa.html">Pesquisa</a></li>
+                <li><a href="./grafico.html">Gráficos</a></li>
+                <li><a href="../index.html">Sair</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="menu-bg" id="menu-bg"></div>
+
+
+    <div class="login">
+        <div class="alerta_erro">
+          <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+          </div>
+        </div>
+
+    <div class="formulario">
+        <h1 class="h1">Pesquisa</h1>
+
+
+
+
+
+        <div class="h1">
+            <input type="text" class="entradas_pesquisa" id="input_idade" placeholder="Idade Ex:5" aria-label="Idade">
+        </div>
+
+        <div class="h1">
+            <input type="text" class="entradas_pesquisa" id="genero_input" placeholder="Coloque Gênero que você Mais gosta. Ex:Ação" aria-label="Genero">
+        </div>
+
+        <div class="h1">
+            <input type="text" class="entradas_pesquisa" id="leitura_input" placeholder="Quanto Você lê? de 0 a 10"
+                aria-label="leitura">
+        </div>
+
+        <div class="h1">
+            <input type="text" class="entradas_pesquisa" id="email_input" placeholder="Email" aria-label="Email">
+        </div>
+
+
+        <select class="escola" id="select_rede">
+            <option selected disabled value="#"> Selecione Uma Rede Escolar</option>
+            <option value="publica">Publica</option>
+            <option value="particular">Particular</option>
+        </select>
+
+
+        <div class="h1">
+            <button class="button" onclick="pesquisa()">Enviar</button>
+        </div>
+
+    </div>
+
+    <div id="div_erros_login"></div>
+  </div>
+
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+
+    function pesquisa() {
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        
+        var emailVar = email_input.value;
+        var idadeVar = input_idade.value;
+        var generoVar = genero_input.value;
+        var leitura = leitura_input.value;
+        var escolar_rede = select_rede.value;
+        if (
+            generoVar == "" ||
+            emailVar == "" ||
+            idadeVar == "" ||
+            escolar_rede == "" ||
+            leitura == ""
+
+        ) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML =
+                "(Mensagem de erro para todos os campos em branco)";
+
+        }
+
+        var indice_arroba = emailVar.indexOf('@');
+
+
+        if (indice_arroba < 0) {
+            alert(' Não possui @ nessa frase!');
+            return false;
+        }
+
+
+        if (idadeVar < 4 || idadeVar > 20) {
+            alert('Idade Não Permitida !');
+            return false;
+        }
+
+        if (leitura < 0 || leitura > 10) {
+            alert('Escolha entre 0 a 10 !');
+            return false;
+        } else{
+            true;
+        }
+
+      
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/pesquisa", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                generoServer: generoVar,
+                idadeServer: idadeVar,
+                leituraServer: leitura,
+                emailServer: emailVar,
+                escola_redeServer: escolar_rede
+            }),
+        })
+   
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+
+                    mensagem_erro.innerHTML =
+                        "pesquisa realizado com sucesso! Redirecionando para tela de garfico...";
+
+                    setTimeout(() => {
+                        window.location.href = "grafico.html";
+                    }, "200");
+
+                    limparFormulario();
+
+                } else {
+                    throw "Houve um erro ao tentar realizar  a pesquisa!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+
+            });
+
+        return false;
+    }
+
+   
+
+    function sumirMensagem() {
+        cardErro.style.display = "none";
+    }
+
+
+    function menuOnClick() {
+        document.getElementById("menu-bar").classList.toggle("change");
+        document.getElementById("nav").classList.toggle("change");
+        document.getElementById("menu-bg").classList.toggle("change-bg");
+    }
+
+</script>

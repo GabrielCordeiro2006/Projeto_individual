@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" type="imagex/png" href="../img/inicial-transformed-removebg-preview (1).png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManHQ</title>
+
+    <link rel="stylesheet" href="./../css/grafico.css" />
+    <script src="../js/sessao.js"></script>
+    <script src="./../js/alerta.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- scripts do Chart.js - 2022-1 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  
+</head>
+<body>
+
+  
+         
+    <div id="menu">
+        <div id="menu-bar" onclick="menuOnClick()">
+          <div id="bar1" class="bar"></div>
+          <div id="bar2" class="bar"></div>
+          <div id="bar3" class="bar"></div>
+        </div>
+        <nav class="nav" id="nav">
+          <ul>
+            <li><a href="./dashoboard.html">Home</a></li>
+            <li><a href="./pesquisa.html">Pesquisa</a></li>
+            <li><a href="./grafico.html">Gráficos</a></li>
+            <li><a href="../index.html">Sair</a></li>
+          </ul>
+        </nav> 
+      </div>
+      
+      <div class="menu-bg" id="menu-bg"></div>
+
+      <h1>Gráfico</h1>
+
+      
+      <div class="dash">
+        <div id="alerta">
+          
+        </div>
+    
+        <div class="btns-dash" id="btnAquario">
+        
+        </div>
+    
+        <div id="graficos">
+          
+        </div>
+    </div>
+
+</div>
+
+      
+</body>
+
+
+
+</html>
+
+<script>
+
+    function menuOnClick() {
+        document.getElementById("menu-bar").classList.toggle("change");
+        document.getElementById("nav").classList.toggle("change");
+        document.getElementById("menu-bg").classList.toggle("change-bg");
+      }
+     
+ 
+
+      function exibirAquariosDoUsuario() {
+        var aquarios = JSON.parse(sessionStorage.getItem("AQUARIOS"));
+        aquarios.forEach(item => {
+            // Verifica se o botão do aquário já existe
+            if (!document.getElementById(`btnAquario${item.id}`)) {
+                document.getElementById("btnAquario").innerHTML += `
+                    <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
+                `;
+            }
+    
+            // Verifica se o gráfico já está criado
+            if (!document.getElementById(`grafico${item.id}`)) {
+                document.getElementById("graficos").innerHTML += `
+                    <div class="column">
+                        <div id="grafico${item.id}" class="display-none">
+                            <h3 class="tituloGraficos">
+                                <span id="tituloAquario${item.id}" class="unit">${item.descricao}</span>
+                            </h3>
+                            <div class="graph">
+                                <canvas id="myChartCanvas${item.id}"></canvas>
+                            </div>
+                            <div class="label-captura">
+                                <p id="avisoCaptura${item.id}" style="color: white"></p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+    
+                obterDadosGrafico(item.id);
+            }
+        });
+    
+        if (aquarios.length > 0) {
+            exibirAquario(aquarios[0].id); // exibir o primeiro aquário por padrão
+        }
+    }
+    
+    function exibirAquario(id) {
+        document.querySelectorAll('.column .display-none').forEach(el => el.classList.add('display-none'));
+        document.getElementById(`grafico${id}`).classList.remove('display-none');
+    }
+    
+    function obterDadosGrafico(idDados) {
+        alterarTitulo(idDados);
+    
+        fetch(`/medidas/ultimas/${idDados}`, { cache: 'no-store' })
+            .then(response => {
+                if (response.ok) {
+                    response.json().then(resposta => {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse(); // Invertendo a ordem dos dados se necessário
+                        plotarGrafico(resposta, idDados);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(error => {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+    
+    function plotarGrafico(resposta, idDados) {
+        let labels = [];
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Quantidade de Usuários por Gênero',
+                data: [],
+                backgroundColor: [],
+                borderColor: [],
+                borderWidth: 1
+            }]
+        };
+    
+        const cores = [
+            'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'
+        ];
+    
+        const borderCores = [
+            'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'
+        ];
+    
+        resposta.forEach((registro, index) => {
+            labels.push(registro.genero || 'Desconhecido');
+            dados.datasets[0].data.push(registro.quantidade);
+            dados.datasets[0].backgroundColor.push(cores[index % cores.length]);
+            dados.datasets[0].borderColor.push(borderCores[index % borderCores.length]);
+        });
+    
+        const config = {
+            type: 'bar',
+            data: dados,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: `Gráfico de Usuários por Gênero - ${document.getElementById(`tituloAquario${idDados}`).innerText}`,
+                    },
+                },
+                scales: {
+                    x: {
+                        stacked: false
+                    },
+                    y: {
+                        stacked: false
+                    }
+                }
+            },
+        };
+    
+        let myChart = new Chart(
+            document.getElementById(`myChartCanvas${idDados}`),
+            config
+        );
+    
+        setTimeout(() => atualizarGrafico(idDados, myChart), 2000);
+    }
+    
+    function atualizarGrafico(idDados, myChart) {
+        fetch(`/medidas/ultimas/${idDados}`, { cache: 'no-store' })
+            .then(response => {
+                if (response.ok) {
+                    response.json().then(resposta => {
+                        console.log(`Atualização dos dados: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
+    
+                        let generosExistentes = myChart.data.labels;
+    
+                        resposta.forEach(registro => {
+                            let genero = registro.genero || 'Desconhecido';
+                            let quantidade = registro.quantidade;
+    
+                            let generoIndex = generosExistentes.indexOf(genero);
+                            if (generoIndex === -1) {
+                                console.log(`Adicionando novo gênero: ${genero}`);
+                                myChart.data.labels.push(genero);
+                                myChart.data.datasets[0].data.push(quantidade);
+                                myChart.data.datasets[0].backgroundColor.push(
+                                    'rgba(255, 159, 64, 0.2)'
+                                );
+                                myChart.data.datasets[0].borderColor.push(
+                                    'rgba(255, 159, 64, 1)'
+                                );
+                            } else {
+                                console.log(`Atualizando quantidade para gênero existente: ${genero}`);
+                                myChart.data.datasets[0].data[generoIndex] = quantidade;
+                            }
+                        });
+    
+                        myChart.update();
+                        setTimeout(() => atualizarGrafico(idDados, myChart), 2000);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(error => {
+                console.error(`Erro na atualização dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+    
+    function alterarTitulo(idDados) {
+        document.getElementById(`tituloAquario${idDados}`).innerText = `Aquário ${idDados}`;
+    }
+    
+    window.onload = exibirAquariosDoUsuario;
+    
+
+</script>

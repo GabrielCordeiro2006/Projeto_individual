@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ManHQ</title>
+
+  <script src="./js/sessao.js"></script>
+
+  <link rel="stylesheet" href="./css/cadastro.css" />
+  <link rel="shortcut icon" type="imagex/png" href="./img/inicial-transformed-removebg-preview (1).png">
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+</head>
+
+<body onload="listar()">
+  
+
+  <div class="login">
+    <div class="alerta_erro">
+      <div class="card_erro" id="cardErro">
+        <span id="mensagem_erro"></span>
+      </div>
+    </div>
+   
+    <img src="./img/logo__1_-removebg-preview.png" alt="logo" class="logo"> 
+ 
+    <a href="./login.html" class="brand-logo"><img src="./img/deixou.png" alt="logo" class="back"></a>
+
+    
+
+    <div class="formulario">
+        
+
+        <h1 class="h1">CADASTRO</h1>
+        <div class="h1">
+          <select name="empresas" id="listaEscola" class="escola">
+            <option selected>Selecione Uma Escola</option>
+          </select>
+        </div>
+
+        <div class="h1">
+            <input type="text" class="entradas_cadastro" id="nome_input" placeholder="Username" aria-label="Username">
+        </div>
+            
+
+            <div class="h1">
+                <input type="text" class="entradas_cadastro" id="input_idade" placeholder="Idade Ex:5" aria-label="Idade">
+            </div>
+        
+
+            <div class="h1">
+                <input type="text" class="entradas_cadastro" id="email_input" placeholder="Email" aria-label="Email">
+            </div>
+
+            <div class="h1">
+                <input type="password" class="entradas_cadastro" id="senha_input" placeholder="Senha" aria-label="Password" >
+            </div>
+
+            <div class="h1">
+                <input type="password" class="entradas_cadastro" placeholder="Confirmar Senha" aria-label="Password" id="confirmacao_senha_input">
+            </div> 
+           
+        <div class="h1">
+           <button class="button" onclick="cadastrar()">Cadastrar</button>
+        </div>
+    </div>
+
+    <div class="h1">
+        <a href="./login.html" class="a">Já possui login?</a>
+    </div>
+
+        <div id="div_erros_login"></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+
+<script>
+  function cadastrar() {
+ 
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var idadeVar =  input_idade.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var EscolaId = listaEscola.value;
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ||
+      idadeVar == "" 
+
+      
+    ) 
+    
+    {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+    }
+
+    var indice_arroba = emailVar.indexOf('@');
+        
+
+    if (indice_arroba < 0) {
+    alert(' Não possui @ nessa frase!');
+    return false;
+    }
+
+  
+    if(idadeVar < 4  || idadeVar > 20){
+        alert('Idade Não Permitida !');
+    return false;
+    }
+
+    if(confirmacaoSenhaVar != senhaVar ){
+        alert(' Confirmar senha diferente de senha!');
+    return false;
+    } else { 
+     true;
+    }    
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        idadeServer: idadeVar,
+        senhaServer: senhaVar,
+        escolaServer: EscolaId
+      }),
+    })
+    
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location.href = "login.html";
+          }, "200");
+
+          limparFormulario();
+          
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+     
+      });
+
+    return false;
+  }
+
+  function listar() {
+    fetch("/empresas/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((escola) => {
+          escola.forEach((escola) => {
+            listaEscola.innerHTML += `<option value='${escola.idEscola}'>${escola.nome}</option>`;
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+
+</script>
