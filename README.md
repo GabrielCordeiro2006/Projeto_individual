@@ -4,9 +4,7 @@
 
 
 
-_Web Data Visualization = Visualização de Dados na Web_
-
-_Implementação de Referência para o seu Projeto de Primeiro Semestre_
+_Implementação  para Projeto do Primeiro Semestre_
 
 <hr>
 
