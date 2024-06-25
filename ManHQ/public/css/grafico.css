@@ -12,6 +12,64 @@
     margin-left: 580px;
  
 }
+
+.card{
+  padding: 20px;
+  width: 200px;
+  border: 1px solid transparent;
+  background-image: linear-gradient( white, white), linear-gradient( to right, #FF912B, #FF4438);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-color: transparent; 
+  height: 95px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  border-radius: 10px;
+  white-space: nowrap;
+  position: relative;
+  box-shadow: #a1a1a1 0px 4px 4px 0px;
+  
+  }
+  
+  
+  
+  .card-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 5%;
+  
+  }
+
+  .livros{
+    font-family: "ABeeZee", sans-serif;
+    font-weight: 400;
+    font-style: italic; 
+    color: #000000;
+    
+    
+    }
+    
+    
+    
+    
+    .master_car{
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-evenly; 
+    border: none;
+    margin-top: 4%;
+    width: 700px;
+    height: 405px;
+    margin: 4% auto;
+    overflow: hidden;
+    grid-gap: 10px 15px;
+     
+    }
+  
 .btn {
   font-family: "Barlow", sans-serif;
   border: 0;

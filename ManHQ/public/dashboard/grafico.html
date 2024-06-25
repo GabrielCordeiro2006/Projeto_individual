@@ -25,7 +25,7 @@
 <body>
 
   
-         
+<!-- Menu hamburguer de navegação -->
     <div id="menu">
         <div id="menu-bar" onclick="menuOnClick()">
           <div id="bar1" class="bar"></div>
@@ -33,19 +33,46 @@
           <div id="bar3" class="bar"></div>
         </div>
         <nav class="nav" id="nav">
-          <ul>
+          
+            <!-- Reridiconamento De Páginas -->
+          
+        <ul>
             <li><a href="./dashoboard.html">Home</a></li>
             <li><a href="./pesquisa.html">Pesquisa</a></li>
             <li><a href="./grafico.html">Gráficos</a></li>
+            <li><a href="./ranking.html">Ranking</a></li>
             <li><a href="../index.html">Sair</a></li>
           </ul>
         </nav> 
       </div>
+
       
       <div class="menu-bg" id="menu-bg"></div>
 
       <h1>Gráfico</h1>
+      
+      
+       <!--  Div centralizadora --> 
+     <div class="master_car"> 
 
+         <!-- Os Novos cards Adicionados para fazer novas metrícas -->  
+
+
+         <!-- Metrica de quantidade de usuário -->
+        <div class="card card-center" id="card_one">
+           
+          </div>
+
+           <!-- Metrica de Média De Leitura -->
+          <div class="card card-center" id="card_two">
+    
+          </div>
+
+           <!-- Metrica de quantidade de livros -->
+          <div class="card card-center" id="card_tree">
+            
+          </div>
+      </div>
       
       <div class="dash">
         <div id="alerta">
@@ -78,6 +105,31 @@
         document.getElementById("menu-bg").classList.toggle("change-bg");
       }
      
+    const lista_grafico = ['O Número De Usuários:', 'Média De Leitura:', 'Livros'];
+
+//Estrutura de repetição para chamar as funções
+
+
+      //Função Contagem Do Usuário
+  for (var index = 0; index < card_one.length; index++) {
+    if (index < lista_grafico.length) {
+      card_one[index].innerHTML += `<p class="livros">${lista_grafico[index]}</p>`;
+    }
+  }
+
+  //Função Média De Leitura
+  for (var index = 0; index < card_two.length; index++) {
+    if (index < lista_grafico.length) {
+      card_two[index].innerHTML += `<p class="livros">${lista_grafico[index+1]}</p>`;
+    }
+  }
+    //Função Contagem De Livros
+  for (var index = 0; index < card_tree.length; index++) {
+    if (index < lista_grafico.length) {
+      card_tree[index].innerHTML += `<p class="livros">${lista_grafico[index+2]}</p>`;
+    }
+  }
+ 
  
 
       function exibirAquariosDoUsuario() {
