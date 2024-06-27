@@ -13,6 +13,10 @@
  
 }
 
+.checked {
+  color: orange;
+}
+
 h1{
     font-family: "ABeeZee", sans-serif;
     font-weight: 700;

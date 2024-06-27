@@ -2,57 +2,86 @@
 <html lang="en">
 
 <head>
-    <link rel="shortcut icon" type="imagex/png" href="../img/inicial-transformed-removebg-preview (1).png">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ManHQ</title>
+  <link rel="shortcut icon" type="imagex/png" href="../img/inicial-transformed-removebg-preview (1).png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ManHQ</title>
 
-    <link rel="stylesheet" href="./../css/ranking.css" />
-    <script src="../js/sessao.js"></script>
-    <script src="./../js/alerta.js"></script>
+  <link rel="stylesheet" href="./../css/ranking.css" />
+  <script src="../js/sessao.js"></script>
+  <script src="./../js/alerta.js"></script>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- scripts do Chart.js - 2022-1 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- scripts do Chart.js - 2022-1 -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+  <div id="menu">
+    <div id="menu-bar" onclick="menuOnClick()">
+      <div id="bar1" class="bar"></div>
+      <div id="bar2" class="bar"></div>
+      <div id="bar3" class="bar"></div>
+    </div>
+    <nav class="nav" id="nav">
+      <ul>
+        <li><a href="./dashoboard.html">Home</a></li>
+        <li><a href="./pesquisa.html">Pesquisa</a></li>
+        <li><a href="./grafico.html">Gráficos</a></li>
+        <li><a href="./ranking.html">Ranking</a></li>
+        <li><a href="../index.html">Sair</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="menu-bg" id="menu-bg"></div>
+
+  <h1>Ranking</h1>
 
   
-</head>
-<body>
-    <div id="menu">
-        <div id="menu-bar" onclick="menuOnClick()">
-          <div id="bar1" class="bar"></div>
-          <div id="bar2" class="bar"></div>
-          <div id="bar3" class="bar"></div>
-        </div>
-        <nav class="nav" id="nav">
-          <ul>
-            <li><a href="./dashoboard.html">Home</a></li>
-            <li><a href="./pesquisa.html">Pesquisa</a></li>
-            <li><a href="./grafico.html">Gráficos</a></li>
-            <li><a href="./ranking.html">Ranking</a></li>
-            <li><a href="../index.html">Sair</a></li>
-          </ul>
-        </nav> 
-      </div>
-      <div class="menu-bg" id="menu-bg"></div>
-      
-      <h1>Ranking</h1>
+  <div class="top_1">
+    <h3></h3>
+    <span class="fa fa-star" id="star" ></span>
+    <span class="fa fa-star" id="star"></span>
+    <span class="fa fa-star" id="star"></span>
+    <span class="fa fa-star" id="star"></span>
+    <span class="fa fa-star" id="star"></span>
+  </div>
 
+  <div class="top_2">
+    <h3></h3>
+    <span class="fa fa-star" id="star_two"></span>
+    <span class="fa fa-star" id="star_two"></span>
+    <span class="fa fa-star" id="star_two"></span>
+    <span class="fa fa-star" id="star_two"></span>
+    <span class="fa fa-star" id="star_two"></span>
+  </div>
+
+  <div class="top_3">
+    <h3></h3>
+    <span class="fa fa-star" id="star_tree"></span>
+    <span class="fa fa-star" id="star_tree"></span>
+    <span class="fa fa-star" id="star_tree"></span>
+    <span class="fa fa-star" id="star_tree"></span>
+    <span class="fa fa-star" id="star_tree"></span>
+  </div>
 
 </body>
+
 </html>
 
 
 <script>
-    function menuOnClick() {
-        document.getElementById("menu-bar").classList.toggle("change");
-        document.getElementById("nav").classList.toggle("change");
-        document.getElementById("menu-bg").classList.toggle("change-bg");
-      }
-    
+  function menuOnClick() {
+    document.getElementById("menu-bar").classList.toggle("change");
+    document.getElementById("nav").classList.toggle("change");
+    document.getElementById("menu-bg").classList.toggle("change-bg");
+  }
+
 </script>
