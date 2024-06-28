@@ -106,29 +106,29 @@
         document.getElementById("menu-bg").classList.toggle("change-bg");
       }
      
-    const lista_grafico = ['O Número De Usuários:', 'Média De Leitura:', 'Livros'];
+    const lista_grafico = ['O Número De Usuários:','Média De Leitura:','Livros'];
 
 //Estrutura de repetição para chamar as funções
 
 
       //Função Contagem Do Usuário
-  for (var index = 0; index < card_one.length; index++) {
+  for (let index = 0; index < card_one.length; index++) {
     if (index < lista_grafico.length) {
       card_one[index].innerHTML += `<p class="livros">${lista_grafico[index]}</p>`;
     }
   }
 
   //Função Média De Leitura
-  for (var index = 0; index < card_two.length; index++) {
-    if (index < lista_grafico.length) {
-      card_two[index].innerHTML += `<p class="livros">${lista_grafico[index-1]}</p>`;
+  for (let indez = 1; indez < card_two.length; indez++) {
+    if (indez < lista_grafico.length) {
+      card_two[indez].innerHTML += `<p class="livros">${lista_grafico[indez]}</p>`;
     }
   }
     //Função Contagem De Livros
-  for (var index = 0; index < card_tree.length; index++) {
-    if (index < lista_grafico.length) {
-      card_tree[index].innerHTML += `<p class="livros">${lista_grafico[index-2]}</p>`;
-    }
+  for (let indey = 1; indey < card_tree.length; indey++) {
+    if (indey < lista_grafico.length) {
+      card_tree[indey].innerHTML += `<p class="livros">${lista_grafico[indey]}</p>`;
+    } 
   }
  
  
