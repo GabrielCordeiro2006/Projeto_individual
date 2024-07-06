@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <link rel="shortcut icon" type="imagex/png" href="../img/inicial-transformed-removebg-preview (1).png">
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ManHQ</title>
-
   <link rel="stylesheet" href="./../css/ranking.css" />
   <script src="../js/sessao.js"></script>
   <script src="./../js/alerta.js"></script>
@@ -19,10 +14,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- scripts do Chart.js - 2022-1 -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
+  <title>ManHQ</title>
 </head>
-
 <body>
   <div id="menu">
     <div id="menu-bar" onclick="menuOnClick()">
@@ -45,30 +38,30 @@
   <!-- Título da nova página -->
   <h1>Ranking</h1>
 
-
-   <!-- div master para centralizar as outras divs -->
   <div class="ranking">
-
-
-    <!-- top 1 com mais leitura -->
+    <!-- Melhor Avaliação -->
     <div class="top_1">
-      <h3>Usuário 1</h3>
-      <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
-
+        <h3>Usuário com mais leituras</h3>
+        <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
+        <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
+        <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
+        <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
+        <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
+        <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
+        <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
+        <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
+        <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
+        <span class="fa fa-star" id="star"></span> <!---estrelas de avaliação 1 a 10 -->
+        <div id="melhor-usuario">
+            <!-- Informações do usuário com mais leituras serão inseridas aqui -->
+        </div>
     </div>
-    <!-- top 2 com mais leitura -->
+    
+    <!-- Pior Avaliação -->
     <div class="top_2">
-      <h3>Usuário 2</h3>
-      <span class="fa fa-star" id="star_two"></span> <!---estrelas de avaliação 1 a 10 -->
+
+        <h3>Usuário com menos leituras</h3>
+        <span class="fa fa-star" id="star_two"></span> <!---estrelas de avaliação 1 a 10 -->
       <span class="fa fa-star" id="star_two"></span><!---estrelas de avaliação 1 a 10 -->
       <span class="fa fa-star" id="star_two"></span><!---estrelas de avaliação 1 a 10 -->
       <span class="fa fa-star" id="star_two"></span><!---estrelas de avaliação 1 a 10 -->
@@ -78,32 +71,49 @@
       <span class="fa fa-star" id="star_two"></span><!---estrelas de avaliação 1 a 10 -->
       <span class="fa fa-star" id="star_two"></span><!---estrelas de avaliação 1 a 10 -->
       <span class="fa fa-star" id="star_two"></span><!---estrelas de avaliação 1 a 10 -->
+        <div id="pior-usuario">
+            <!-- Informações do usuário com menos leituras serão inseridas aqui -->
+        </div>
     </div>
-  <!-- top 3 com mais leitura -->
-    <div class="top_3">
-      <h3>Usuário 3</h3>
-      <span class="fa fa-star" id="star_tree"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star_tree"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star_tree"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star_tree"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star_tree"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star_tree"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star_tree"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star_tree"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star_tree"></span> <!---estrelas de avaliação 1 a 10 -->
-      <span class="fa fa-star" id="star_tree"></span> <!---estrelas de avaliação 1 a 10 -->
-    </div>
-  </div>
+</div>
+
 </body>
-
 </html>
-
-
 <script>
   function menuOnClick() {
     document.getElementById("menu-bar").classList.toggle("change");
     document.getElementById("nav").classList.toggle("change");
     document.getElementById("menu-bg").classList.toggle("change-bg");
   }
+
+  fetch('/ranking')
+            .then(response => response.json())
+            .then(data => {
+                const melhorUsuarioDiv = document.getElementById('melhor-usuario');
+                const piorUsuarioDiv = document.getElementById('pior-usuario');
+                
+                const melhorUsuario = data.melhor;
+                const piorUsuario = data.pior;
+
+                melhorUsuarioDiv.innerHTML = `
+                    <p>Nome: ${melhorUsuario.nome}</p>
+                    <p>Gênero: ${melhorUsuario.genero}</p>
+                    <p>Idade: ${melhorUsuario.idade}</p>
+                    <p>Leituras: ${melhorUsuario.leitura}</p>
+                    <p>Email: ${melhorUsuario.email}</p>
+                    <p>Tipo de Escola: ${melhorUsuario.tipoescola}</p>
+                    ${'<span class="fa fa-star"></span>'.repeat(melhorUsuario.leitura)}
+                `;
+
+                piorUsuarioDiv.innerHTML = `
+                    <p>Nome: ${piorUsuario.nome}</p>
+                    <p>Gênero: ${piorUsuario.genero}</p>
+                    <p>Idade: ${piorUsuario.idade}</p>
+                    <p>Leituras: ${piorUsuario.leitura}</p>
+                    <p>Email: ${piorUsuario.email}</p>
+                    <p>Tipo de Escola: ${piorUsuario.tipoescola}</p>
+                    ${'<span class="fa fa-star"></span>'.repeat(piorUsuario.leitura)}
+                `;
+            });
 
 </script>
