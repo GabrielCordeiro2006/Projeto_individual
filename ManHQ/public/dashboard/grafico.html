@@ -52,28 +52,20 @@
 
       <h1>Gráfico</h1>
       
-      
-       <!--  Div centralizadora --> 
-     <div class="master_car"> 
+      <!-- Div centralizadora -->
+    <div class="master_car"> 
 
-         <!-- Os Novos cards Adicionados para fazer novas metrícas -->  
+    <!-- Os Novos cards Adicionados para fazer novas métricas -->  
 
+    <!-- Metrica de quantidade de usuário -->
+    <div class="card card-center" id="card_one"></div>
 
-         <!-- Metrica de quantidade de usuário -->
-        <div class="card card-center" id="card_one">
-           
-          </div>
+    <!-- Metrica de Média De Leitura -->
+    <div class="card card-center" id="card_two"></div>
 
-           <!-- Metrica de Média De Leitura -->
-          <div class="card card-center" id="card_two">
-    
-          </div>
-
-           <!-- Metrica de quantidade de livros -->
-          <div class="card card-center" id="card_tree">
-            
-          </div>
-      </div>
+    <!-- Metrica de quantidade de livros -->
+    <div class="card card-center" id="card_tree"></div>
+</div>
       
       <div class="dash">
         <div id="alerta">
@@ -106,31 +98,29 @@
         document.getElementById("menu-bg").classList.toggle("change-bg");
       }
      
-    const lista_grafico = ['O Número De Usuários:','Média De Leitura:','Livros'];
+      const lista_grafico = ['O Número De Usuários:', 'Média De Leitura:', 'Livros'];
 
-//Estrutura de repetição para chamar as funções
-
-
-      //Função Contagem Do Usuário
-  for (let index = 0; index < card_one.length; index++) {
-    if (index < lista_grafico.length) {
-      card_one[index].innerHTML += `<p class="livros">${lista_grafico[index]}</p>`;
-    }
-  }
-
-  //Função Média De Leitura
-  for (let indez = 1; indez < card_two.length; indez++) {
-    if (indez < lista_grafico.length) {
-      card_two[indez].innerHTML += `<p class="livros">${lista_grafico[indez]}</p>`;
-    }
-  }
-    //Função Contagem De Livros
-  for (let indey = 1; indey < card_tree.length; indey++) {
-    if (indey < lista_grafico.length) {
-      card_tree[indey].innerHTML += `<p class="livros">${lista_grafico[indey]}</p>`;
-    } 
-  }
- 
+      // Função Contagem Do Usuário
+      for (let index = 0; index < card_one.length; index++) {
+        if (index < lista_grafico.length) {
+          card_one[index].innerHTML += `<p class="livros">${lista_grafico[index]}</p>`;
+        }
+      }
+      
+      // Função Média De Leitura
+      for (let index = 0; index < card_two.length; index++) {
+        if (index < lista_grafico.length) {
+          card_two[index].innerHTML += `<p class="livros">${lista_grafico[index]}</p>`;
+        }
+      }
+      
+      // Função Contagem De Livros
+      for (let index = 0; index < card_tree.length; index++) {
+        if (index < lista_grafico.length) {
+          card_tree[index].innerHTML += `<p class="livros">${lista_grafico[index]}</p>`;
+        }
+      }
+      
  
 
       function exibirAquariosDoUsuario() {
