@@ -34,7 +34,8 @@ h1{
   }
 
 
-  .ranking{
+   /* Estilo para o ranking */
+   .ranking {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,21 +43,43 @@ h1{
     margin: auto;
     width: 500px;
     height: 300px;
-    border: 0px solid black;
-    margin-top: 50px ;
+    border: 1px solid #ccc; /* Alterado para uma borda mais sutil */
+    border-radius: 10px; /* Adicionando cantos arredondados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adicionando sombra */
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #f9f9f9; /* Fundo leve */
   }
 
-  .top_1{
-    margin-bottom: 10px;
+  /* Estilo para cada item de ranking */
+  .ranking div {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    background-color: #fff; /* Fundo branco para cada bloco */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve para cada bloco */
   }
 
-  .top_2{
+  /* Estilo para títulos */
+  .ranking h3 {
     margin-bottom: 10px;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 600;
+    color: #333;
   }
-  .top_3{
-    margin-bottom: 10px;
+
+  /* Estilo para textos */
+  .ranking p {
+    margin: 5px 0;
+    color: #666;
   }
-  
+
+  /* Estilo para estrelas */
+  .fa-star {
+    color: gold;
+  }
 #menu {
     z-index: 2;
   }

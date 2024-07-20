@@ -13,14 +13,15 @@
  
 }
 
-.card{
+ /* Estilo para os cards */
+ .card {
   padding: 20px;
   width: 200px;
   border: 1px solid transparent;
-  background-image: linear-gradient( white, white), linear-gradient( to right, #FF912B, #FF4438);
+  background-image: linear-gradient(white, white), linear-gradient(to right, #FF912B, #FF4438);
   background-origin: border-box;
   background-clip: padding-box, border-box;
-  background-color: transparent; 
+  background-color: transparent;
   height: 95px;
   justify-content: center;
   align-items: center;
@@ -30,20 +31,15 @@
   white-space: nowrap;
   position: relative;
   box-shadow: #a1a1a1 0px 4px 4px 0px;
-  
-  }
-  
-  
-  
-  .card-center {
+}
+
+.card-center {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: auto;
   margin-top: 5%;
-  
-  }
-
+}
   .livros{
     font-family: "ABeeZee", sans-serif;
     font-weight: 400;
